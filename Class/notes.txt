@@ -1,0 +1,276 @@
+Pointers
+Arrays
+Strings(Both C and C++ Style)
+STL
+
+STL Link:
+https://www.scaler.com/topics/cpp/map-in-cpp/
+https://cplusplus.com/reference/stl/
+STL Video in 1 hr:
+https://www.youtube.com/watch?v=mOzPZ3hWFVQ
+
+CheatSheet:
+https://www.geeksforgeeks.org/cpp-stl-cheat-sheet/
+
+
+
+STL:
+
+Container:
+https://www.learncpp.com/cpp-tutorial/stl-containers-overview/
+https://cplusplus.com/reference/stl/
+
+Sequential:
+Array
+Vector
+List
+Dequeue
+Forward_List
+
+
+Associative:
+Map
+Set
+MultiSet
+MultiMap
+
+Unordered:
+Unordered Map
+Unordered Set
+Unordered MultiMap
+Unordered MultiSet
+
+
+Iterator:
+https://www.geeksforgeeks.org/introduction-iterators-c/
+https://www.javatpoint.com/cpp-iterators
+
+
+
+
+*** Vector:
+Cherno Vector:
+https://www.youtube.com/watch?v=PocJ5jXv8No&t=301s
+Cherno Vector Optimisation:
+https://www.youtube.com/watch?v=HcESuwmlHEY&t=5s
+
+https://cplusplus.com/reference/vector/vector/
+
+https://stackoverflow.com/questions/6632971/what-is-the-difference-between-stdarray-and-stdvector-when-do-you-use-one-o
+
+
+*** std::Array
+https://cplusplus.com/reference/array/array/
+
+std::array is a container that wraps around fixed size arrays. 
+It also doesn't loose the information of its length when decayed to a pointer.
+
+You know that when we pass an array (also known as C-style array) to a function, the address of the array gets passed to the function i.e. the pointer to the array gets passed to the function. Thus, the information about the size of the array gets lost.
+To deal with such situations, we use std::array and std::vector.
+
+Also could be retunred from the function.
+Moreover the performance is similar,as it just a wrapper around the array.
+Should be used for the cases, where there are less copies.
+
+
+
+*****Strings:
+C-Style Strings:
+https://www.learncpp.com/cpp-tutorial/c-style-string-symbolic-constants/
+https://www.learncpp.com/cpp-tutorial/c-style-strings/
+
+Diff in types of strings
+https://www.geeksforgeeks.org/char-vs-stdstring-vs-char-c/
+
+std::string
+https://cplusplus.com/reference/string/string/
+https://www.geeksforgeeks.org/stdstring-class-in-c/
+
+
+
+
+Maps:
+Cherno Video:
+https://www.youtube.com/watch?v=KiB0vRi2wlc&pp=ygULbWFwcyBjaGVybm8%3D
+
+
+
+
+
+Heaps:
+
+Playlist:
+https://www.youtube.com/watch?v=RU08pp_VPSs&list=PLEJXowNB4kPyP2PdMhOUlTY6GrRIITx28
+
+
+Priority_queue:
+https://cplusplus.com/reference/queue/priority_queue/
+https://en.cppreference.com/w/cpp/container/priority_queue
+
+
+Mentor Graphics:
+Basic C++
+Trees
+Linked List
+Design Patterns
+Bit Manipulation as well.
+Matrix questions
+
+
+
+
+Resources:
+https://www.geeksforgeeks.org/tag/mentor-graphics/
+https://www.geeksforgeeks.org/siemens-interview-experience-for-edamentor-graphics-2022/
+https://leetcode.com/discuss/interview-experience/2013526/mentor-graphics-siemens-eda-internship-interview-experience
+
+question on tree was to clone a binary tree , copy data of linklist
+
+
+
+C++ Prac/Notes:
+
+ToDO:
+Assert
+Pre Processor
+typedef
+
+Copy Assignment Operator
+
+
+Modern C++:
+Move Semantics:
+auto(done)
+std::optional
+override
+
+
+std::cout << static_cast<Base&>(derived).getValue();
+
+
+
+
+
+
+***
+Brace Initilisation:
+https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/
+https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-list
+
+
+int x{10}   
+----->It doesn't implicitly convert the values.
+
+EG: int x{1.0}  // will give error, because it won't implicitly convert to int. We 
+have to explicitly convert it.
+
+But int x(1.0) (direct Initilisation) will implicitly covert it to int.
+
+
+Note {}-initializers do not allow narrowing conversions (and that is usually a good thing) 
+and allow explicit constructors (which is fine, we’re intentionally initializing a new variable).
+
+
+
+***
+initializer_list
+
+https://www.geeksforgeeks.org/std-initializer_list-in-cpp-11/
+https://learn.microsoft.com/en-us/cpp/standard-library/initializer-list-class?view=msvc-170
+
+
+*****Limitations of initializer_list
+The initializer lists also have some limitations associated with it:
+
+**Size cannot be changed: The size of initializer_list is fixed at compile time. 
+It does not have a dynamic nature as a standard container such as a vector. 
+The size of the initializer cannot be changed once it has been created.
+
+**Cannot access the elements randomly: initializer_list supports only forward iteration. 
+We cannot access the desired or random element using the index as standard containers.
+
+
+**Immutable elements: The elements within an initializer_list are immutable. 
+Once the list is created, the values cannot be modified. 
+Any attempt to modify the elements through the iterator or by any other means will result in a compilation error.
+
+
+
+
+
+
+****
+Operator Overloading:
+(Learncpp)
+
+***When to use member function operator overloading or friend/normal:
+
+When the left operand is getting modified, then try to use member function method.
+EG(unary operator ++/--,).
+
+When dealing with binary operators that don’t modify the left operand 
+(e.g. operator+), the normal or friend function version is typically preferred.
+
+
+
+
+
+****
+Multi Threading:
+
+
+****
+Thread States:
+
+New:
+The Thread has been created.
+
+Runnable:
+The created thread is now in execution.
+
+Blocked:
+The thread is now not executing and is in blocked/waiting stated.
+May be waiting for other thread to complete its execution/
+
+Terminated:
+When the thread has completed its execution.
+
+
+
+***
+Join()
+/*
+    Waiting for my child thread to complete its execution.
+    Now I(main) will be in the blocked state until my child thread completes its
+    execution.
+    So the parent thread waits for the child thread to join.
+
+
+*/
+
+
+JOIN NOTES
+0. Once a thread is started we wait for this thread to finish by calling join() function on thread object.
+1. Double join will result into program termination.
+2. If needed we should check thread is joinable before joining. ( using joinable() function)
+
+DETACH NOTES   (Basically we daemonize the thread.)
+0. This is used to detach newly created thread from the parent thread.
+1. Always check before detaching a thread that it is joinable otherwise we may end up double detaching and 
+   double detach() will result into program termination.
+2. If we have detached thread and main function is returning then the detached thread execution is suspended.
+3. A detached thread is not joinable.  
+
+NOTES:
+Either join() or detach() should be called on thread object, otherwise during thread object�s destructor it will 
+terminate the program. Because inside destructor it checks if thread is still joinable? if yes then it terminates the program.
+
+---->The moment you create a thread, it becomes joinable.
+
+
+
+DATA Race Condition:
+Data race condition occurs when:
+
+1. Two or more concurrent threads try to access the same mem location
+2.  Atleast one thread is modifying it.

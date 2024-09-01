@@ -1,0 +1,43 @@
+***
+Brace Initilisation:
+https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/
+https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-list
+
+
+int x{10}   
+----->It doesn't implicitly convert the values.
+
+EG: int x{1.0}  // will give error, because it won't implicitly convert to int. We 
+have to explicitly convert it.
+
+But int x(1.0) (direct Initilisation) will implicitly covert it to int.
+
+
+Note {}-initializers do not allow narrowing conversions (and that is usually a good thing) 
+and allow explicit constructors (which is fine, we’re intentionally initializing a new variable).
+
+
+
+***
+initializer_list
+
+https://www.geeksforgeeks.org/std-initializer_list-in-cpp-11/
+https://learn.microsoft.com/en-us/cpp/standard-library/initializer-list-class?view=msvc-170
+
+
+*****Limitations of initializer_list
+The initializer lists also have some limitations associated with it:
+
+**Size cannot be changed: The size of initializer_list is fixed at compile time. 
+It does not have a dynamic nature as a standard container such as a vector. 
+The size of the initializer cannot be changed once it has been created.
+
+**Cannot access the elements randomly: initializer_list supports only forward iteration. 
+We cannot access the desired or random element using the index as standard containers.
+
+
+**Immutable elements: The elements within an initializer_list are immutable. 
+Once the list is created, the values cannot be modified. 
+Any attempt to modify the elements through the iterator or by any other means will result in a compilation error.
+
+
