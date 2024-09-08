@@ -292,12 +292,14 @@ to avoid any data race conditions.
 
 
 ***Mutex----> Mutual Exclusion (Lock)
+(It allows one thread's access to the resouce and excluding all the other threads.)
 
 Once a thread acquired a lock on the resource, then the other threads have to wait
 until the acquired thread releases the lock.
+All the other threads will be in the blocked/waiting state, until the lock is released.
 
 
-Recursive Mutex:
+*** Recursive Mutex ***
 
 Use Case:
 
@@ -345,9 +347,56 @@ BOTTOM LINE:
 
 
 
-Mutex try_lock:
+*** Mutex try_lock ***
 the thread tried to acquire the lock for the resource. If in case it mutex.try_lock(), returns
 true then it means that thread has acquired the lock and if it is false, then it means that the 
 lock hasn't been acquired. But the thread will not be blocked in this case, unlike the mutex.
- 
+
+
+
+*** Shared_Mutex(C++17) ***
+It is used in case where in multiple threads can acquire the lock at a resources at the same 
+time(but only for reading), but only 1 lock can acquire the exclusive writer lock at a time.
+The write lock is acquired once all the read locks have been released.
+Also once the write lock has been acquired, then at time no thead can acquire the read/write lock.
+
+!!!!!Write lock is exclusive.
+
+It is generally used in the situations, where in there are large no of threads which want 
+to read the data, than write to it.
+EG: Database acccess situations.
+
+(Also these are resouce extensive , as they internally have to
+maintain the count of the threads as well.)
+
+
+
+*** lock_guard ***
+
+mymutex.lock();
+/* do whatever necessary with the shared data */
+mymutex.unlock();
+
+That is fine, as long as
+
+1. you never forget to correctly match lock and unlock calls, 
+even in the presence of multiple return paths, and 
+2. the operations done while the mutex is locked do not throw exceptions
+
+
+
+Since the above points are difficult to get right manually 
+(they're a big maintenance burden), there's a way to automate them. 
+That is the std::lock_guard convenience we put aside at start. 
+It's just a simple RAII class which calls lock() on the mutex in its constructor 
+and unlock() in its destructor. 
+With a lock guard, the code for accessing shared data will look like this:
+
+{
+  std::lock_guard<std::mutex> g(mymutex);
+  /* do whatever necessary with the shared data */
+}
+This guarantees that the mutex will correctly be unlocked when the operation finishes, 
+whether by one of potentially many return (or other jump) statements, or by an exception.
+
 
