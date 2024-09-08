@@ -345,5 +345,9 @@ BOTTOM LINE:
 
 
 
-
+Mutex try_lock:
+the thread tried to acquire the lock for the resource. If in case it mutex.try_lock(), returns
+true then it means that thread has acquired the lock and if it is false, then it means that the 
+lock hasn't been acquired. But the thread will not be blocked in this case, unlike the mutex.
+ 
 
