@@ -1,0 +1,1 @@
+https://medium.com/@adarsh_tech/liskov-substitution-principle-lsp-vs-dependency-inversion-principle-dip-48b5404cc887
